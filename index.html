@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hidden Village</title>
+    <link rel="stylesheet" href="css/all.min.css" />
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/master.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- start setting -->
+    <div class="settings-box">
+      <div class="toggle-setting">
+        <i class="fa fa-gear"></i>
+      </div>
+      <div class="settings-container">
+        <div class="option-Box">
+          <h4>Colors</h4>
+          <ul class="colors-list">
+            <li class="active" data-color="#FF9800"></li>
+            <li data-color="#E91E63"></li>
+            <li data-color="#009688"></li>
+            <li data-color="#03A9F4"></li>
+            <li data-color="#4CAF50"></li>
+          </ul>
+        </div>
+        <div class="option-Box">
+          <h4>Random Backgrounds</h4>
+          <div class="random-bag">
+            <span class="yes active" data-background="yes">Yes</span>
+            <span class="no" data-background="no">No</span>
+          </div>
+        </div>
+        <div class="option-Box">
+          <h4>Show Bullets</h4>
+          <div class="bullets-option">
+            <span class="yes active" data-display="show">Yes</span>
+            <span class="no" data-display="hide">No</span>
+          </div>
+        </div>
+        <button class="reset-option">Reset Options</button>
+      </div>
+    </div>
+    <!-- end setting -->
+
+    <!-- start Nav Bullets -->
+    <div class="nav-bullets">
+      <div class="bullet" data-section=".about-us">
+        <div class="tooltip">About Us</div>
+      </div>
+      <div class="bullet" data-section=".gallery">
+        <div class="tooltip">Our Option</div>
+      </div>
+      <div class="bullet" data-section=".skills">
+        <div class="tooltip">Our Game</div>
+      </div>
+      <div class="bullet" data-section=".testimonials">
+        <div class="tooltip">Timeline</div>
+      </div>
+      <div class="bullet" data-section=".contact">
+        <div class="tooltip">Contact</div>
+      </div>
+    </div>
+    <!-- end Nav Bullets -->
+
+    <!-- start landing Page -->
+    <div class="landing-page">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="header-ar">
+          <div class="logo">MY Design</div>
+          <div class="links-container">
+            <ul class="links">
+              <li>
+                <a href="#" class="active" data-section=".about-us">About</a>
+              </li>
+              <li><a href="#" data-section=".gallery">Photo Option</a></li>
+              <li><a href="#" data-section=".skills">Game</a></li>
+              <li><a href="#" data-section=".testimonials">Testimonials</a></li>
+              <li><a href="#" data-section=".contact">Contact</a></li>
+            </ul>
+            <button class="toggle-menu">
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="intr-text">
+        <h1>Welcome to <span>the Hidden Village </span> of Coders</h1>
+        <p>
+          Guess the Naruto Character" is a fun game where players identify
+          characters from pictures. With different difficulty levels, time
+          limits, and hints, it’s perfect for casual fans and die-hard
+          enthusiasts to test their Naruto knowledge!
+        </p>
+      </div>
+    </div>
+    <!-- end landing page -->
+
+    <!-- start About page -->
+    <div class="container">
+      <div class="about-us">
+        <div class="info-box">
+          <h2>About Us</h2>
+          <p>
+            A Naruto game where players identify characters from pictures would
+            be exciting for fans. With levels ranging from iconic characters
+            like Naruto to obscure ones, time limits, and hints, it offers fun
+            challenges for both casual and die-hard enthusiasts.
+          </p>
+        </div>
+        <div class="image-box">
+          <img src="./image/naruto-page.png" alt="" />
+        </div>
+      </div>
+    </div>
+    <!-- end About page -->
+    <!-- start Galler -->
+    <div class="gallery">
+      <div class="container">
+        <h2>Our Gallery</h2>
+        <div class="image-box-1"></div>
+      </div>
+    </div>
+    <!-- end Galler -->
+    <!-- start Skill page -->
+    <!-- start Game page -->
+    <!-- End Game page -->
+    <div class="skills">
+      <h1 class="howa"></h1>
+      <div class="game">
+        <div class="char">
+          <img id="character-image" src="" alt="Character Image" />
+          <h2 id="character-name">Name:</h2>
+        </div>
+        <!-- <input type="text" id="guess-input" placeholder="Enter Character Name"> -->
+        
+      </div>
+      <div class="guess-game">
+        <div class="game-area">
+          <div class="inputs"></div>
+          <div class="control">
+            <!-- <button id="check-guess">Check Guess</button> -->
+            <p id="result"></p>
+            <button id="check-guess" class="check">Check Word</button>
+            <button class="hint"><span></span> Hints</button>
+          </div>
+          <div class="message"></div>
+        </div>
+        <div class="key-colors">
+          <h2>Key Colors</h2>
+          <div class="key-color">
+            <div class="key in-place"></div>
+            <div class="key-text">Letter Is Correct and In Place</div>
+          </div>
+          <div class="key-color">
+            <div class="key not-in-place"></div>
+            <div class="key-text">Letter Is Correct But Not In Place</div>
+          </div>
+          <div class="key-color">
+            <div class="key no"></div>
+            <div class="key-text">Letter Is Wrong</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- this is game -->
+
+      <!-- <div class="container">
+            <h2>About Character</h2>
+            <div class="skill-box">
+                <div class="skill-name">PWOR</div>
+                <div class="skill-progress">
+                    <span data-progress="80%"></span>
+                </div>
+            </div>
+        </div> -->
+    </div>
+    <!-- end Skill page -->
+
+    <!-- start Timline -->
+    <!-- <div class="timeline">
+        <div class="container">
+            <div class="timeline-content">
+                <div class="year">2010</div>
+                <div class="left">
+                    <div class="content">    
+                        <h3>text heding</h3>
+                        <p>Codier connects front-end developers to create, 
+                            share and challenge one another. Browse the 
+                            wide range of community-made coding challenges 
+                            or design your own for other to solve.</p>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="right">
+                    <div class="content">    
+                        <h3>text heding</h3>
+                        <p>Codier connects front-end developers to create, 
+                            share and challenge one another. Browse the 
+                            wide range of community-made coding challenges 
+                            or design your own for other to solve.</p>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="year">2016</div>
+                <div class="left">
+                    <div class="content">    
+                        <h3>text heding</h3>
+                        <p>Codier connects front-end developers to create, 
+                            share and challenge one another. Browse the 
+                            wide range of community-made coding challenges 
+                            or design your own for other to solve.</p>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="left">
+                    <div class="content">    
+                        <h3>text heding</h3>
+                        <p>Codier connects front-end developers to create, 
+                            share and challenge one another. Browse the 
+                            wide range of community-made coding challenges 
+                            or design your own for other to solve.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <!-- end Timline -->
+
+    <!-- start Features -->
+    <!-- <div class="features">
+            <h2>Our Features</h2>
+            <div class="container">
+                <div class="feat-box">
+                    <img src="./image/icon01.png" alt="">
+                    <h4>developement</h4>
+                    <p>we are wide range of community-made coding challenges 
+                        or design your own for other to solve.
+                    </p>
+                </div>
+                <div class="feat-box">
+                    <img src="./image/icon02.png" alt="">
+                    <h4>developement</h4>
+                    <p>we are wide range of community-made coding challenges 
+                        or design your own for other to solve.
+                    </p>
+                </div>
+                <div class="feat-box">
+                    <img src="./image/icon03.png" alt="">
+                    <h4>developement</h4>
+                    <p>we are wide range of community-made coding challenges 
+                        or design your own for other to solve.
+                    </p>
+                </div>
+                <div class="feat-box">
+                    <img src="./image/icon04.png" alt="">
+                    <h4>developement</h4>
+                    <p>we are wide range of community-made coding challenges 
+                        or design your own for other to solve.
+                    </p>
+                </div>
+                <div class="feat-box">
+                    <img src="./image/icon04.png" alt="">
+                    <h4>developement</h4>
+                    <p>we are wide range of community-made coding challenges 
+                        or design your own for other to solve.
+                    </p>
+                </div>
+                <div class="feat-box">
+                    <img src="./image/icon04.png" alt="">
+                    <h4>developement</h4>
+                    <p>we are wide range of community-made coding challenges 
+                        or design your own for other to solve.
+                    </p>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div> -->
+    <!-- end Features -->
+
+    <!-- start Testimonials -->
+    <div class="testimonials">
+      <div class="container">
+        <h2>Testimonials</h2>
+        <div class="ts-box">
+          <p>
+            wide range of community-made coding challenges or design your own
+            for other to solve.
+          </p>
+          <div class="person-info">
+            <!-- <img src="https://placehold.it/80/DDD" alt=""> -->
+            <img src="./image/man.jpg" alt="" />
+            <h4>Ahmed Mosaad</h4>
+            <p>CEO At Company</p>
+          </div>
+        </div>
+        <div class="ts-box">
+          <p>
+            wide range of community-made coding challenges or design your own
+            for other to solve.
+          </p>
+          <div class="person-info">
+            <img src="./image/naruto06.webp" alt="" />
+            <h4>Ahmed Mosaad</h4>
+            <p>CEO At Company</p>
+          </div>
+        </div>
+        <div class="ts-box">
+          <p>
+            wide range of community-made coding challenges or design your own
+            for other to solve.
+          </p>
+          <div class="person-info">
+            <img src="./image/mr.jpg" alt="" />
+            <h4>Ahmed Mosaad</h4>
+            <p>CEO At Company</p>
+          </div>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+
+    <!-- end Testimonials -->
+
+    <!-- start Contact Us-->
+    <div class="contact">
+      <div class="container">
+        <h2>Contact Us</h2>
+        <form action="">
+          <div class="left">
+            <input type="text" placeholder="Your Name" name="uesrname" />
+            <input type="text" placeholder="Your Phone" name="phone" />
+            <input type="text" placeholder="Your Email" name="email" />
+            <input type="text" placeholder="Subject" name="subject" />
+          </div>
+          <div class="right">
+            <textarea name="message" placeholder="Your Message"></textarea>
+            <input type="submit" value="Send" />
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+    <!-- End Contact Us-->
+
+    <div class="characters"></div>
+
+    <script src="./js/master.js"></script>
+  </body>
+</html>

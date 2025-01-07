@@ -10,16 +10,18 @@ let numbersOfLetters;
 let guess;
 let one = [];
 let nameG ;
-let numberOfHints = 4;
+let numberOfHints = 3;
+
 // Fetch character data from API
+// https://narutodb.xyz/api/character?page=1&limit=20
 async function fetdata() {
   try {
     const res = await fetch(
-      "https://narutodb.xyz/api/character?page=1&limit=20"
+      "https://naruto-api-rsl3.onrender.com/api/v1/characters"
     );
     const user = await res.json();
     // console.log(user);
-    return user.characters; // Assuming the API returns an array of characters
+    return user; // Assuming the API returns an array of characters
   } catch (error) {
     console.error("Error fetching or displaying characters:", error);
   }
@@ -316,87 +318,284 @@ document.addEventListener("click", (e) => {
 // });
 
 /***************************************************** */
-
+// Game 
 // Function to start the game by displaying a random character
 
+// async function startGame() {
+//   const characters = await fetdata();
+//   if (characters && characters.length > 0) {
+//     // Pick a random character from the fetched data
+//     currentCharacter = characters[Math.floor(Math.random() * characters.length)];
+//     // Display the character's image and hint (not showing the name)
+//     const image = document.getElementById("character-image");
+//     image.src = currentCharacter.images[0] || "placeholder.jpg"; // Fallback image if not found
+//     const name = document.getElementById("character-name");
+//     name.textContent = "Name: ???"; // Hide the name from the player initially
+//     one = currentCharacter.name; //// name tha charater
+//   } else {
+//     console.log("No characters available to display.");
+//   }
+// }
+// let allImages = {image , uersname}; // Store all images
+// let currentPage = 0; // Current page index
+// const imagesPerPage = 10; // Number of images to display per page
+// let imagesToShow ;
+// async function getImages() {
+//   const char = await fetdata(); // Fetch data
+//   char.flatMap(e =>{ 
+//     allImages.image = e?.images[0] || [];
+//     allImages.uersname = e?.name;
+//   });
+  
+//   // Initialize the first set of images
+//   displayImages();
+//   setupButtons();
+// }
+
+// function displayImages() {
+//   const divImgData = document.querySelector(".image-box-1");
+//   divImgData.innerHTML = ""; // Clear previously displayed images
+
+//   const start = currentPage * imagesPerPage;
+//   const end = start + imagesPerPage;
+//   imagesToShow = allImages.slice(start, end);
+
+//   imagesToShow.forEach(imgSrc => {
+//     const imgElement = document.createElement("img");
+//     imgElement.src = imgSrc;
+//     imgElement.alt = "Character Image";
+//     divImgData.appendChild(imgElement);
+//   });
+// }
+
+// function setupButtons() {
+//   const backButton = document.querySelector(".rander button:nth-child(1)");
+//   const nextButton = document.querySelector(".rander button:nth-child(2)");
+
+//   // Add event listeners to the buttons
+//   backButton.onclick = () => {
+//     if (currentPage > 0) {
+//       currentPage--;
+//       displayImages();
+//     }
+//   };
+
+//   nextButton.onclick = () => {
+//     if ((currentPage + 1) * imagesPerPage < allImages.length) {
+//       currentPage++;
+//       displayImages();
+//     }
+//   };
+// }
+/******************************************* */
+// let allImages = []; // Array to store all characters with image and username
+// let currentPage = 0; // Current page index
+// const imagesPerPage = 10; // Number of images to display per page
+// let imagesToShow; // Subset of images for the current page
+
+// async function getImages() {
+//   const char = await fetdata(); // Fetch data
+  
+//   // Collect images and usernames
+//   allImages = char.map(e => ({
+//     image: e?.images[0] || "placeholder.jpg", // Fallback if no image
+//     username: e?.name || "Unknown Character" // Fallback if no name
+//   }));
+  
+//   // Initialize the first set of images
+//   displayImages();
+//   setupButtons();
+// }
+
+// 
+
+// function setupButtons() {
+//   const backButton = document.querySelector(".rander button:nth-child(1)");
+//   const nextButton = document.querySelector(".rander button:nth-child(2)");
+
+//   // Add event listeners to the buttons
+//   backButton.onclick = () => {
+//     if (currentPage > 0) {
+//       currentPage--;
+//       displayImages();
+//     }
+//   };
+
+//   nextButton.onclick = () => {
+//     if ((currentPage + 1) * imagesPerPage < allImages.length) {
+//       currentPage++;
+//       displayImages();
+//     }
+//   };
+// }
+/********************************************** */
+let allImages = []; // Array to store all characters with image and username
+let currentPage = 0; // Current page index
+const imagesPerPage = 10; // Number of images to display per page
+let imagesToShow = []; // Subset of images for the current page
+
+async function getImages() {
+  const char = await fetdata(); // Fetch data
+  
+  // Collect images and usernames
+  allImages = char.map(e => ({
+    image: e?.images[0] || "placeholder.jpg", // Fallback if no image
+    username: e?.name || "Unknown Character" // Fallback if no name
+  }));
+  
+  // Initialize the first set of images
+  displayImages();
+  setupButtons();
+}
+function displayImages() {
+    const divImgData = document.querySelector(".image-box-1");
+    divImgData.innerHTML = ""; // Clear previously displayed images
+  
+    const start = currentPage * imagesPerPage;
+    const end = start + imagesPerPage;
+    imagesToShow = allImages.slice(start, end); // Get the current page of images
+    imagesToShow.forEach(({ image, username })=> {
+      const imgElement = document.createElement("img");
+      imgElement.src = image;
+      imgElement.alt = "Character Image";
+      divImgData.appendChild(imgElement);
+    });
+  
+    // imagesToShow.forEach(({ image, username }) => {
+    //   const imgElement = document.createElement("img");
+    //   imgElement.src = image;
+    //   // imgElement.alt = `Character: ${username}`;
+  
+    //   // const caption = document.createElement("p");
+    //   // caption.textContent = `Name: ${username}`;
+  
+    //   const container = document.createElement("div");
+    //   container.appendChild(imgElement);
+    //   // container.appendChild(caption);
+  
+    //   divImgData.appendChild(container);
+    // });
+  }
+// function displayImages() {
+//   const divImgData = document.querySelector(".image-box-1");
+//   divImgData.innerHTML = ""; // Clear previously displayed images
+
+//   const start = currentPage * imagesPerPage;
+//   const end = start + imagesPerPage;
+//   imagesToShow = allImages.slice(start, end); // Get the current page of images
+
+//   imagesToShow.forEach(({ image, username }) => {
+//     const imgElement = document.createElement("img");
+//     imgElement.src = image;
+//     imgElement.alt = `Character: ${username}`;
+
+//     const caption = document.createElement("p");
+//     caption.textContent = `Name: ${username}`;
+
+//     const container = document.createElement("div");
+//     container.appendChild(imgElement);
+//     container.appendChild(caption);
+
+//     divImgData.appendChild(container);
+//   });
+// }
+
+function setupButtons() {
+  const backButton = document.querySelector(".rander button:nth-child(1)");
+  const nextButton = document.querySelector(".rander button:nth-child(2)");
+
+  // Add event listeners to the buttons
+  let disid = 1;
+
+  backButton.onclick = () => {
+    if (disid > 1)
+      disid--;
+    if (currentPage > 0) {
+      currentPage--;
+      displayImages();
+      startGame();
+    }
+  };
+  nextButton.onclick = () => {
+    console.log(disid);
+    console.log("jjjjj")
+    disid++;
+    if ((currentPage + 1) * imagesPerPage < allImages.length) {
+      currentPage++;
+      displayImages();
+      startGame();
+    }
+  };
+}
+
+// Function to start the game and pick a random image from the displayed 10
 async function startGame() {
-  const characters = await fetdata();
-  if (characters && characters.length > 0) {
-    // Pick a random character from the fetched data
-    currentCharacter =
-      characters[Math.floor(Math.random() * characters.length)];
+  // Ensure data is loaded
+  if (imagesToShow && imagesToShow.length > 0) {
+    // Pick a random character from the current page of displayed images
+    const randomIndex = Math.floor(Math.random() * imagesToShow.length);
+    const currentCharacter = imagesToShow[randomIndex];
+
     // Display the character's image and hint (not showing the name)
     const image = document.getElementById("character-image");
-    image.src = currentCharacter.images[0] || "placeholder.jpg"; // Fallback image if not found
+    image.src = currentCharacter.image || "placeholder.jpg"; // Fallback image if not found
     const name = document.getElementById("character-name");
     name.textContent = "Name: ???"; // Hide the name from the player initially
-    one = currentCharacter.name; //// name tha charater
+
+    // Store the correct answer
+    // console.log("Character name00:", currentCharacter.username);
+     // Debug: log the correct name
+     nameG = currentCharacter.username
   } else {
     console.log("No characters available to display.");
   }
+  // return currentCharacter.username
 }
 
-// Check if the player's guess is correct
-// function checkGuess() {
-//   const guessInput = document.getElementById("guess-input");
-//   const result = document.getElementById("result");
-//   guess = guessInput.value.trim().toLowerCase();
+// Call the getImages function when the page loads
+// getImages();
 
-//   if (guess === currentCharacter.name.toLowerCase()) {
-//     result.textContent = "Correct! You guessed the character!";
-//     result.style.color = "green";
-//     const Name = document.getElementById("character-name");
-//     Name.textContent = `Name: ${guess}`;
-//   } else {
-//     result.textContent = "Incorrect! Try again!";
-//     result.style.color = "red";
-//   }
-//   guessInput.value = ""; // Clear input field
-// }
+// Call the getImages function when the page loads
 
-async function getimage() {
-  const char = await fetdata();
-  // console.log(char);
-  const divimgdata = document.querySelector(".image-box-1");
 
-  char.forEach((e) => {
-    const inage = document.createElement("img");
-    inage.src = e?.images?.[0];
-    divimgdata.appendChild(inage);
-  });
-}
 // this is for see in that cheating
-async function addinhtml() {
-  const characters = await fetdata(); // Fetch data
-  let charctersHTML = "";
+/***************************************** */
+// async function addinhtml() {
+//   const characters = await fetdata(); // Fetch data
 
-  characters.forEach((chr) => {
-    // Safely access properties
-    const name = chr?.name || "Unknown Character";
-    const image = chr?.images?.[0] || "placeholder.jpg"; // Use a placeholder image if none exists
-    const jutsu = chr?.jutsu?.[0] || "No Jutsu";
+//   // console.log("########")
+//   // console.log(characters)
+//   // console.log("*********")
+//   let charctersHTML = "";
 
-    charctersHTML += `
-            <div class="character">
-                <h2 class="username">${name}</h2>
-                <img src="${image}" alt="${name}">
-                <p class="descreption">Jutsu: ${jutsu}</p>
-            </div>
-        `;
-  });
-  const elecarctre = document.querySelector(".characters");
-  elecarctre.innerHTML = charctersHTML;
-}
+//   characters.forEach((chr) => {
+//     // Safely access properties
+//     const name = chr?.name || "Unknown Character";
+//     const image = chr?.images?.[0] || "placeholder.jpg"; // Use a placeholder image if none exists
+//     const jutsu = chr?.jutsu?.[0] || "No Jutsu";
+
+//     charctersHTML += `
+//             <div class="character">
+//             <img src="${image}" alt="${name}">
+//             <h2 class="username">${name}</h2>
+//             <p class="descreption">Jutsu: ${jutsu}</p>
+//             </div>
+//         `;
+//   });
+//   const elecarctre = document.querySelector(".characters");
+//   elecarctre.innerHTML = charctersHTML;
+// }
+/**************************************** */
+/**************************************** */
+/**************************************** */
 /**************************************** */
 
 async function generateInput() {
  
+  await getImages();
   await startGame();
   const inputsContainer = document.querySelector(".inputs");
-  const { name } = currentCharacter;
-  nameG = name;
-
-  numbersOfLetters = nameG.length;
+  numbersOfLetters =  nameG.length;
   
   // Create Main Try Div
   for (let i = 1; i <= numbersOfTries; i++) {
@@ -471,6 +670,9 @@ function handleGuesses() {
     const inputField = document.querySelector(`#guess-${currentTry}-letter-${i}`);
     const letter = inputField.value.toLowerCase();
     const actualLetter =  nameG[i - 1].toLowerCase();
+    // console.log(actualLetter);
+    // console.log("########");
+    // console.log(letter);
 
     
     // Game Logic
@@ -490,6 +692,7 @@ function handleGuesses() {
   // Check If User Win Or Lose
   if (successGuess) {
     messageArea.innerHTML = `You Win The Word Is <span>${nameG}</span>`;
+
     if (numberOfHints === 2) {
       messageArea.innerHTML = `<p>Congratz You Didn't Use Hints</p>`;
     }
@@ -550,7 +753,13 @@ function getHint() {
     const randomIndex = Math.floor(Math.random() * emptyEnabledInputs.length);
     const randomInput = emptyEnabledInputs[randomIndex];
     const indexToFill = Array.from(enabledInputs).indexOf(randomInput);
+    console.log("*---------*")
+    console.log(indexToFill)
+    console.log("*---------*")
     if (indexToFill !== -1) {
+      console.log("*---------*")
+      console.log(indexToFill)
+      console.log("*---------*")
       randomInput.value = nameG[indexToFill].toUpperCase();
     }
   }
@@ -572,13 +781,15 @@ function handleBackspace(event) {
 
 document.addEventListener("keydown", handleBackspace);
 
-getimage();
+// getimage();
+
+// getImages();
 window.onload = function () {
   generateInput();
 };
 
-addinhtml();
+// addinhtml();
 // generateInput();
 
 // Event listeners for game interaction
-document.getElementById("check-guess").addEventListener("click", checkGuess);
+// document.getElementById("check-guess").addEventListener("click", handleGuesses);

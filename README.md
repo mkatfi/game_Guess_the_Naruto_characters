@@ -1,7 +1,6 @@
 
 # 🎮 Guess the Naruto Characters  
 
-![Game Screenshot](./image/naruto-page.png)
 ![Game Preview](./image/naruto02.jpg)  
 
 ## 🌟 About the Game  

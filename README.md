@@ -1,7 +1,7 @@
 
 # 🎮 Guess the Naruto Characters  
 
-![Game Screenshot](image/screenshot.png)  
+![Game Screenshot](./image/naruto-page.png)  
 
 ## 🌟 About the Game  
 **Guess the Naruto Characters** is a fun and interactive web game where players test their knowledge of Naruto by identifying characters based on their images. If you're a Naruto fan, this game is perfect for you!  
@@ -42,7 +42,7 @@
 ## 🏆 Screenshots  
 ✨ *Give users a preview of the game by adding screenshots here!*  
 Example:  
-![Game Preview](image/screenshot.png)  
+![Game Preview](./image/naruto11.png)  
 
 ## 🤝 Contributing  
 Want to improve this game? Awesome! Feel free to:  

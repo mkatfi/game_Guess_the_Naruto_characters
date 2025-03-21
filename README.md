@@ -57,15 +57,3 @@ Want to improve this game? Awesome! Feel free to:
 ---
 
 💡 *Enjoy the game & test your Naruto knowledge!* 🚀🔥  
-
-```
-
----
-
-### 🔥 **Why This is Better:**  
-✅ **More Engaging & Exciting** – Uses emojis and better formatting.  
-✅ **More Informative** – Includes sections like Features, Screenshots, and Contributions.  
-✅ **Professional Look** – Well-structured with clear headings and descriptions.  
-✅ **Encourages Contributions** – Invites people to contribute.  
-
-This will make your GitHub repo look more **polished and attractive**! 🚀 Let me know if you need further improvements! 😊
